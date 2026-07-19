@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="SNOD — small, thoughtfully made software and games.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SNOD">
+  <meta property="og:description" content="Small things, thoughtfully made.">
+  <meta property="og:url" content="https://hosting.snod.net/">
+  <link rel="canonical" href="https://hosting.snod.net/">
+  <link rel="icon" href="/pedalpeaks/assets/apple-touch-icon.png">
+  <title>SNOD — Small things, thoughtfully made</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #07111f;
+      --ink-soft: #0b1d2c;
+      --panel: #10283b;
+      --text: #f7fbff;
+      --muted: #a8bbc8;
+      --cyan: #59e5ea;
+      --yellow: #ffd53d;
+      --lime: #b8ef52;
+      --line: rgba(255,255,255,.14);
+      --content: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; background: var(--ink); }
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--text);
+      font-family: "Avenir Next", Avenir, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 78% 14%, rgba(89,229,234,.12), transparent 25rem),
+        radial-gradient(circle at 15% 85%, rgba(184,239,82,.08), transparent 28rem),
+        linear-gradient(145deg, #07111f, #0a1c2a 62%, #0b2933);
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 20;
+      padding: 9px 13px;
+      border-radius: 10px;
+      color: var(--ink);
+      background: var(--cyan);
+      font-weight: 850;
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(calc(100% - 42px), var(--content));
+      margin: 0 auto;
+      padding: 27px 0;
+    }
+
+    .wordmark {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 950;
+      letter-spacing: .21em;
+      text-decoration: none;
+    }
+
+    header span {
+      color: var(--muted);
+      font-size: .67rem;
+      font-weight: 750;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    main {
+      width: min(calc(100% - 42px), var(--content));
+      margin: 0 auto;
+      padding: clamp(65px, 11vh, 118px) 0 95px;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(230px, .85fr);
+      gap: clamp(40px, 8vw, 120px);
+      align-items: end;
+      margin-bottom: 74px;
+    }
+
+    .intro > * { min-width: 0; }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: var(--cyan);
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 25px;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--yellow);
+      content: "";
+    }
+
+    h1, h2, p { text-wrap: balance; }
+    h1 {
+      max-width: 750px;
+      margin: 0;
+      font-size: clamp(3.5rem, 8vw, 7.8rem);
+      font-weight: 950;
+      letter-spacing: -.075em;
+      line-height: .86;
+    }
+
+    h1 em { color: var(--yellow); font-style: normal; }
+
+    .intro-copy {
+      max-width: 370px;
+      margin: 0 0 7px;
+      padding: 0 0 7px 24px;
+      border-left: 2px solid rgba(89,229,234,.35);
+      color: var(--muted);
+      font-size: clamp(.96rem, 1.8vw, 1.12rem);
+      line-height: 1.7;
+    }
+
+    .project-label {
+      margin: 0 0 15px;
+      color: rgba(168,187,200,.72);
+      font-size: .67rem;
+      font-weight: 850;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .project-card {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      grid-template-columns: minmax(250px, .72fr) minmax(0, 1.28fr);
+      min-height: 390px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background: linear-gradient(145deg, rgba(16,40,59,.98), rgba(8,26,39,.96));
+      box-shadow: 0 35px 100px rgba(0,0,0,.34);
+      text-decoration: none;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .project-card:hover,
+    .project-card:focus-visible {
+      border-color: rgba(89,229,234,.64);
+      box-shadow: 0 42px 115px rgba(0,0,0,.43), 0 0 0 4px rgba(89,229,234,.1);
+      transform: translateY(-5px);
+    }
+
+    .project-copy {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(30px, 5vw, 58px);
+    }
+
+    .project-type {
+      margin: 0 0 14px;
+      color: var(--cyan);
+      font-size: .69rem;
+      font-weight: 900;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 5rem);
+      font-weight: 950;
+      letter-spacing: -.06em;
+      line-height: .92;
+    }
+
+    .project-copy > p:not(.project-type) {
+      max-width: 390px;
+      margin: 22px 0 0;
+      color: #c3d4de;
+      font-size: .93rem;
+      line-height: 1.66;
+    }
+
+    .project-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 30px;
+      color: var(--yellow);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .project-action b {
+      display: grid;
+      place-items: center;
+      width: 27px;
+      height: 27px;
+      border: 1px solid rgba(255,213,61,.38);
+      border-radius: 50%;
+      font-size: .8rem;
+    }
+
+    .project-visual {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 72% 23%, rgba(255,213,61,.26), transparent 11rem),
+        linear-gradient(145deg, rgba(89,229,234,.09), transparent 55%);
+    }
+
+    .app-icon {
+      position: absolute;
+      top: 35px;
+      left: 4%;
+      z-index: 4;
+      width: 118px;
+      padding: 6px;
+      border: 1px solid rgba(255,255,255,.34);
+      border-radius: 29%;
+      background: rgba(255,255,255,.1);
+      box-shadow: 0 22px 50px rgba(0,0,0,.35);
+      transform: rotate(-5deg);
+    }
+
+    .app-icon img { border-radius: 24%; }
+
+    .game-shot {
+      position: absolute;
+      top: 100px;
+      right: -10%;
+      left: 8%;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 23px;
+      box-shadow: 0 28px 70px rgba(0,0,0,.38);
+      transform: rotate(2deg);
+    }
+
+    .game-shot img { width: 100%; aspect-ratio: 2.17 / 1; object-fit: cover; }
+
+    .project-card::after {
+      position: absolute;
+      z-index: -1;
+      right: -6%;
+      bottom: -125px;
+      width: 63%;
+      height: 245px;
+      border-radius: 50% 50% 0 0;
+      background: var(--lime);
+      content: "";
+      transform: rotate(-4deg);
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: min(calc(100% - 42px), var(--content));
+      margin: 0 auto;
+      padding: 28px 0 34px;
+      border-top: 1px solid var(--line);
+      color: rgba(168,187,200,.68);
+      font-size: .67rem;
+    }
+
+    footer p { margin: 0; }
+    footer a { color: var(--muted); font-weight: 750; text-decoration: none; }
+    footer a:hover { color: var(--cyan); }
+    :focus-visible { outline: 3px solid var(--yellow); outline-offset: 5px; }
+
+    @media (max-width: 800px) {
+      main { padding-top: 55px; }
+      .intro { grid-template-columns: 1fr; gap: 32px; margin-bottom: 52px; }
+      .intro-copy { max-width: 560px; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-visual { min-height: 330px; }
+      .project-copy { padding-bottom: 20px; }
+    }
+
+    @media (max-width: 520px) {
+      header, main, footer { width: min(calc(100% - 30px), var(--content)); }
+      header span { display: none; }
+      h1 { font-size: clamp(3.15rem, 15vw, 4.5rem); }
+      .intro-copy { padding-left: 17px; }
+      .project-card { border-radius: 24px; }
+      .project-copy { padding: 30px 25px 17px; }
+      .project-visual { min-height: 270px; }
+      .app-icon { top: 23px; width: 82px; }
+      .game-shot { top: 68px; left: 5%; border-radius: 15px; }
+      footer { align-items: flex-start; flex-direction: column; gap: 9px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#projects">Skip to projects</a>
+  <header>
+    <a class="wordmark" href="/">SNOD</a>
+    <span>Small things, thoughtfully made</span>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Hello from SNOD</p>
+        <h1 id="page-title">Small things.<br><em>Thoughtfully made.</em></h1>
+      </div>
+      <p class="intro-copy">A quiet home for software, games, and the occasional idea that was too interesting to leave in a notebook.</p>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-label">
+      <p class="project-label" id="projects-label">Current project</p>
+      <a class="project-card" href="/pedalpeaks/" aria-label="Explore the Pedal Peaks website">
+        <div class="project-copy">
+          <p class="project-type">Game for iPhone &amp; iPad</p>
+          <h2>Pedal<br>Peaks</h2>
+          <p>A momentum-driven cycling game about timing the crest, matching the landing, and carrying your flow one hill further.</p>
+          <span class="project-action">Explore Pedal Peaks <b aria-hidden="true">↗</b></span>
+        </div>
+        <div class="project-visual" aria-hidden="true">
+          <div class="app-icon"><img src="/pedalpeaks/assets/app-icon.webp" alt=""></div>
+          <div class="game-shot"><img src="/pedalpeaks/assets/coastal-rollers.webp" alt=""></div>
+        </div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 SNOD</p>
+    <a href="/pedalpeaks/imprint.html">Imprint</a>
+  </footer>
+</body>
+</html>
