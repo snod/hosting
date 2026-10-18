@@ -278,6 +278,11 @@
       transform: rotate(-4deg);
     }
 
+
+    .project-card + .project-card { margin-top: 28px; }
+    .project-card-tally::after { background: #cca352; }
+    .app-icon-large { top: 50%; left: 50%; width: 190px; margin: -95px 0 0 -95px; }
+
     footer {
       display: flex;
       align-items: center;
@@ -340,7 +345,7 @@
     </section>
 
     <section id="projects" aria-labelledby="projects-label">
-      <p class="project-label" id="projects-label">Current project</p>
+      <p class="project-label" id="projects-label">Projects</p>
       <a class="project-card" href="/pedalpeaks/" aria-label="Explore the Pedal Peaks website">
         <div class="project-copy">
           <p class="project-type">Game for iPhone &amp; iPad</p>
@@ -351,6 +356,17 @@
         <div class="project-visual" aria-hidden="true">
           <div class="app-icon"><img src="/pedalpeaks/assets/app-icon.webp" alt=""></div>
           <div class="game-shot"><img src="/pedalpeaks/assets/coastal-rollers.webp" alt=""></div>
+        </div>
+      </a>
+      <a class="project-card project-card-tally" href="/tally/" aria-label="Explore the Keep a Tally website">
+        <div class="project-copy">
+          <p class="project-type">Puzzle game for iPhone</p>
+          <h2>Keep a<br>Tally</h2>
+          <p>A grid puzzle about pushing tubs, swinging turnplates and getting every man out of a flooding coal pit.</p>
+          <span class="project-action">Explore Keep a Tally <b aria-hidden="true">↗</b></span>
+        </div>
+        <div class="project-visual" aria-hidden="true">
+          <div class="app-icon app-icon-large"><img src="/tally/assets/app-icon.png" alt=""></div>
         </div>
       </a>
     </section>
